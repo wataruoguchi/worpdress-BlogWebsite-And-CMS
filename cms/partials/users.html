@@ -1,0 +1,70 @@
+<!-- First row -->
+<div class="row fullWidth">
+	<div class="small-12 column">
+		<h2 class="cms-subpage-title">Users</h2>
+		<!-- ADD NEW -->
+		<a class="button tiny radius" ng-click="add();" ui-sref="page6">Add New</a>
+	</div>
+</div>
+<!-- Second row -->
+<div class="row fullWidth">
+	<!-- SEARCH -->
+	<div class="medium-12 large-2 columns">
+		<input type="text" ng-model="searchBox" placeholder="Search users..." />
+	</div>
+
+	<!-- FILTER BUTTONS -->
+	<ul class="medium-12 large-4 columns filters button-group">
+		<li><a class="button tiny" ng-class="{'button-positive': isActive('all')}" ng-click="setActive('all'); getCommentSearchResult();">All</a></li>
+		<li><a class="button tiny" ng-class="{'button-positive': isActive('admin')}" ng-click="setActive('admin'); getCommentSearchResult();">Admin</a></li>
+		<li><a class="button tiny" ng-class="{'button-positive': isActive('general')}" ng-click="setActive('general'); getCommentSearchResult();">General</a></li>
+		<li><a class="button tiny" ng-class="{'button-positive': isActive('deleted')}" ng-click="setActive('deleted'); getCommentSearchResult();">Deleted</a></li>
+	</ul>
+
+	<!-- PAGINATION -->
+	<div class="medium-12 large-6 columns clearfix">
+		<div class="right pagesDisplay">
+			<a class="button tiny" ng-disabled="currentPage == 0" ng-click="currentPage=0">«</a>
+			<a class="button tiny" ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1">‹</a>
+			Page 
+			<span ng-if="numberOfPages()>0">{{currentPage+1}}</span>
+			<span ng-if="numberOfPages()==0">0</span>
+			of {{numberOfPages()}}
+			<a class="button tiny" ng-disabled="currentPage >= filteredResults.length/pageSize-1" ng-click="currentPage=currentPage+1">›</a>
+			<a class="button tiny" ng-disabled="currentPage >= filteredResults.length/pageSize-1" ng-click="currentPage=numberOfPages()-1">»</a>
+		</div>
+	</div>
+</div>
+<!-- Third row -->
+<div class="row fullWidth">
+	<div class="small-12 column">
+		<table class="fullWidth">
+			<!-- LIST -->
+			<thead>
+				<tr>
+					<th class="hide-for-small-only medium-1 columns"></th>
+					<th class="small-3 medium-2 columns">Display Name</th>
+					<th class="small-2 medium-1 columns">Role</th>
+					<th class="small-2 medium-2 columns">User Name</th>
+					<th class="small-4 medium-3 columns">Email</th>
+					<th class="hide-for-small-only medium-3 columns">URL</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat='result in filteredResults | startFrom: currentPage*pageSize | limitTo:pageSize'>
+					<td class="hide-for-small-only medium-1 columns">
+					<a ng-if="currentUserId!=result.userId && filter!='deleted'" 
+					ng-click="trash(currentPage*pageSize+$index);">Delete</a>
+					</td>
+					<td class="small-3 medium-2 columns">
+						<a ng-click="getEditUserId(currentPage*pageSize+$index);" ui-sref="page6">{{result.displayName}}</a>
+					</td>
+					<td class="small-2 medium-1 columns">{{result.roleName}}</td>
+					<td class="small-2 medium-2 columns">{{result.userName}}</td>
+					<td class="small-4 medium-3 columns">{{result.Email}}</td>
+					<td class="hide-for-small-only medium-3 columns"><a href="result.url">{{result.URL}}</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

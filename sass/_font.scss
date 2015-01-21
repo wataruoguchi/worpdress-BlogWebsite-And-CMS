@@ -1,0 +1,10 @@
+// http://blackbe.lt/useful-sass-mixins-font-face-webfonts/
+@each $font-face in "glyphicons-halflings-regular" {
+    @font-face {
+          font-family: $font-face; font-style: normal; font-weight: normal;
+          src: url('../lib/vender/fonts/#{$font-face}.eot');
+          src: url('../lib/vender/fonts/#{$font-face}.eot?') format('eot'),
+               url('../lib/vender/fonts/#{$font-face}.woff') format('woff'),
+               url('../lib/vender/fonts/#{$font-face}.ttf')  format('truetype');
+    }
+}

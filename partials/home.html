@@ -1,0 +1,31 @@
+<div class="container">
+	<div class="row filters">
+		<div class="col-sm-6 col-md-2 col-md-offset-7 text-right">
+			<ul class="">
+				<li ng-class="{active: isOrder('newest')}"><a href="" ng-click="setOrder('newest'); predicate='updatedDate'">Newest</a></li>
+				<li> /</li>
+				<li ng-class="{active: isOrder('popular')}"><a href="" ng-click="setOrder('popular'); predicate='views'">Popular</a></li>
+			</ul>
+		</div>
+		<div class="col-sm-6 col-md-3 form-group">
+			<input type="text" placeholder="Search" class="form-control" ng-model="searchBox">
+		</div>
+	</div>
+	<!-- articles -->
+	<div class="row">
+		<div class="col-sm-10 centered">
+			<div class="row">
+				<div class="col-sm-12 col-md-6 col-lg-4" ng-repeat="result in filteredResults | orderBy:predicate:true">
+					<div class="rounded rounded-link well-sm">
+						<a ui-sref="article({postId:result.postId})"></a>
+						<div class="inner-shadow-img" style="background-image: url(./cms/{{result.imageUrl}})" ng-if="result.imageUrl!=null"></div>
+						<div class="inner-shadow-img" style="background-image: url(./asset/placeholder.png)" ng-if="result.imageUrl==null"></div>
+						<h3 class="title">{{result.header}}</h3>
+						<p class="author">{{result.displayName}}</p>
+						<p class="pageview">{{result.views | number}}</p>
+					</div>
+				</div>
+			</div>			
+		</div>
+	</div>
+</div>

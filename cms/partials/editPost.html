@@ -1,0 +1,70 @@
+<!-- First row -->
+<div class="row fullWidth">
+	<div class="small-12 column">
+		<h2 class="cms-subpage-title">Add/Edit Post</h2>
+	</div>
+</div>
+<!-- Second row -->
+<div class="row fullWidth" ng-repeat="data in oneRecordData">
+	<form name="post">
+		<div class="small-12 medium-7 large-9 column">
+			<input ng-if="data.replyId==null" type="text" class="titleTextbox" ng-model="data.header" placeholder="Enter title here" name="title" ng-maxlength="50" required/>
+			<span class="error" ng-show="post.title.$dirty && post.title.$invalid">Leave title within 50 charactors</span>
+			<!-- It's not used this time. Priority is low. -->
+			<!-- 
+			<div class="panel slug">
+				<span class="">Permalink: http://yourwebsite/
+					<input type="text" class="slugTextbox" placeholder="enter-url-here">
+				</span>
+				<a href="" class="edit">Edit</a>
+			</div>
+			 -->
+			<div class="row" ng-if="data.replyId==null">
+				<accordion class="show-for-large-up large-12 column">
+					<accordion-group class="panel">
+						<accordion-heading is-open="status.open">
+						Header Image <i class="pull-right glyphicon"></i>
+						</accordion-heading>
+							<div class="uploadImage">
+								<h4>Upload header image</h4>
+								<cropme width="700" height="500" ratio="0.62" type="jpeg" auto-crop="true" destination-width="700"></cropme>
+								<a href="https://github.com/standup75/cropme" class="credit">powered by cropme</a>
+							</div>
+							<br>
+							<div class="uploadedImage clearfix" ng-if="data.imageUrl!=null">
+								<h4>Current header image</h4>
+								<img class="left" src="{{data.imageUrl}}" alt="">
+							</div>
+					</accordion-group>
+				</accordion>
+			</div>
+
+			<div class="row">
+				<div class="small-12 column textAngular">
+					<text-angular ng-model="data.body"></text-angular>
+					<a href="http://textangular.com/" class="credit" target="_blank">powered by textAngular</a>
+				</div>
+			</div>
+		</div>
+		<div class="small-12 medium-5 large-3 column" ng-if="data.replyId==null">
+			<!-- Publish -->
+			<div class="panel published">
+				<h5>Publish</h5>
+				<a class="button secondary expand radius" ng-click="saveDraft();" ng-disabled="!post.title.$valid">Save Draft</a>
+				<a class="button expand radius" ng-click="publish();" ng-disabled="!post.title.$valid">Publish</a>
+				<a class="button secondary tiny radius trash" ng-click="trash();" ng-disabled="!post.title.$valid">Move to Trash</a>
+			</div>
+			<!-- Tags -->
+			<div class="panel clearfix" ng-if="data.replyId==null">
+				<h5>Tags</h5>
+				<tags-input ng-model="tags" placeholder="Separete tags with commas" name="tag" max-length="20">
+				</tags-input>
+				<h6>Choose from tags</h6>
+				<span class="tagsList" ng-repeat="storedTag in storedTags">
+					<a class="addtag" ng-click="addTag(storedTag.text);">#{{storedTag.text}} </a> 
+				</span>
+				<a href="http://mbenford.github.io/ngTagsInput/" class="credit" target="_blank">powered by ngTagsInput</a>
+			</div>
+		</div>
+	</form>
+</div>

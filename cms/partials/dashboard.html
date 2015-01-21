@@ -1,0 +1,52 @@
+<!-- First row -->
+<div class="row fullWidth">
+	<div class="small-12 column">
+		<h2 class="cms-subpage-title">Dashboard</h2>
+	</div>
+</div>
+<!-- Second row -->
+<div class="row fullWidth">
+	<div class="large-12 columns">
+		<div class="panel">
+			<h4>Welcome to Worpdress!</h4>
+		</div>
+	</div>
+</div>
+<!-- Third row -->
+<div class="row fullWidth">
+	<div class="small-12 columns">
+		<div class="panel glance" ng-repeat="data in oneRecordData">
+			<h5>At a Glance</h5>
+			<div class="row">
+				<div class="small-12 medium-6 column">
+					<div class="panel">
+						<a ui-sref="page2">Post</a>
+							<ul>
+								<li><span ng-if="data.pTotal==null">0</span>
+									<span ng-if="data.pTotal!=null">{{data.pTotal}}</span>
+									 posts</li>
+								<li><span ng-if="data.pPublished==null">0</span>
+									<span ng-if="data.pPublished!=null">{{data.pPublished}}</span>
+								 published</li>
+								<li>{{data.pTotal-data.pPublished}}
+								 draft</li>
+							</ul>
+					</div>
+				</div>
+				<div class="small-12 medium-6 column">
+					<div class="panel">
+						<a ui-sref="page3">Comments</a>
+							<ul>
+								<li><span ng-if="data.cTotal==null">0</span>
+									<span ng-if="data.cTotal!=null">{{data.cTotal}}</span> comments</li>
+								<li>{{data.cTotal-data.cApproved}} pending</li>
+								<li><span ng-if="data.cApproved==null">0</span>
+									<span ng-if="data.cApproved!=null">{{data.cApproved}}</span>
+								 approved</li>
+							</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

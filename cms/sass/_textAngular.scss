@@ -1,0 +1,26 @@
+@import "foundation/components/button-groups";
+.textAngular {
+	.btn-toolbar {
+		@extend .button-bar;
+	}
+	.btn-group {
+		@extend .button-group;
+		.btn {
+			@extend .tiny;
+			border: 1px solid #666;
+			background-color: #fff;
+			color: #333;
+			&:hover {
+				background-color: #adadad;
+			}
+			&.disabled, &[disabled] {
+				background-color: #fff;
+				border-color: #aaa;
+				color: #666;
+			}
+		}
+	}
+	.ta-editor {
+		border: 1px solid #ccc;
+	}
+}

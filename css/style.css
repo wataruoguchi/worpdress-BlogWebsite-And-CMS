@@ -1,0 +1,436 @@
+@font-face {
+  font-family: "glyphicons-halflings-regular";
+  font-style: normal;
+  font-weight: normal;
+  src: url("../lib/vender/fonts/glyphicons-halflings-regular.eot");
+  src: url("../lib/vender/fonts/glyphicons-halflings-regular.eot?") format("eot"), url("../lib/vender/fonts/glyphicons-halflings-regular.woff") format("woff"), url("../lib/vender/fonts/glyphicons-halflings-regular.ttf") format("truetype");
+}
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: #f5f5f5;
+}
+
+/**********mixin.scss**********/
+/******************* BASE *******************/
+html {
+  overflow-y: scroll;
+}
+
+body {
+  font-size: 18px;
+  font-weight: 300;
+  font-family: 'Lato', sans-serif;
+  color: #666666;
+  background-image: url(../asset/bg.jpg);
+}
+
+a {
+  color: #999999;
+}
+a:focus, a:hover {
+  color: #333333;
+}
+
+textarea {
+  resize: none;
+}
+
+/******************* HEADER *******************/
+.navbar, .footer {
+  background-color: whitesmoke;
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.4), 0px -5px 5px rgba(0, 0, 0, 0.4);
+}
+
+.margin-nav {
+  padding: 70px 0 0;
+}
+
+.navbar .navbar-brand {
+  font-family: 'Varela Round', sans-serif;
+  height: 70px;
+  vertical-align: bottom;
+  line-height: 45px;
+  font-size: 50px;
+  text-transform: uppercase;
+  color: #666666;
+}
+.navbar .navbar-brand .phrase {
+  font-family: 'Lato', sans-serif;
+  height: 70px;
+  vertical-align: bottom;
+  line-height: 35px;
+  font-size: 18px;
+  text-transform: initial;
+  padding-left: 20px;
+  color: #999999;
+}
+.navbar .navbar-nav .active > a, .navbar .navbar-nav a {
+  height: 70px;
+  line-height: 40px;
+  font-size: 20px;
+  text-transform: uppercase;
+  color: #333333;
+}
+.navbar .navbar-nav > .active > a, .navbar .navbar-nav > .active > a:focus, .navbar .navbar-nav > .active > a:hover {
+  background-color: #ffd300;
+}
+
+/******************* FOOTER *******************/
+.footer span {
+  font-size: 16px;
+  text-transform: uppercase;
+  line-height: 60px;
+  color: #333333;
+}
+.footer .copyright:before {
+  content: "\00a9  ";
+}
+.footer .footer-sns img {
+  height: 48px;
+}
+
+.full-ui-view {
+  height: 100%;
+}
+
+/******************* HOME *******************/
+.filters {
+  margin: 20px 0;
+  font-size: 16px;
+}
+.filters ul {
+  list-style: none;
+  padding: 0;
+}
+.filters li {
+  display: inline;
+  line-height: 28px;
+}
+.filters ul > li > a {
+  padding: 4px 10px;
+}
+.filters .active > a {
+  color: #333333;
+}
+
+.rounded {
+  width: 100%;
+  background-color: transparent;
+  text-align: center;
+}
+.rounded .inner-shadow-img {
+  margin: 0 auto;
+  background-color: white;
+  -webkit-box-shadow: inset 4px 4px 4px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: inset 4px 4px 4px rgba(0, 0, 0, 0.4);
+  -ms-box-shadow: inset 4px 4px 4px rgba(0, 0, 0, 0.4);
+  box-shadow: inset 4px 4px 4px rgba(0, 0, 0, 0.4);
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  border-radius: 50%;
+  width: 75%;
+  background-attachment: scroll;
+  background-position: center center;
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+}
+.rounded .inner-shadow-img:after {
+  content: "";
+  display: block;
+  padding-top: 100%;
+}
+
+.rounded-link {
+  padding: 40px 0;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -ms-transition: all 0.3s;
+  transition: all 0.3s;
+  position: relative;
+}
+.rounded-link:focus, .rounded-link:hover {
+  background-color: #ffd300;
+}
+.rounded-link a {
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+}
+.rounded-link .title {
+  font-weight: 400;
+  font-size: 18px;
+  text-transform: uppercase;
+  line-height: 27px;
+  color: #666666;
+  height: 54px;
+  overflow: hidden;
+}
+.rounded-link .author, .rounded-link .pageview {
+  font-family: 'Droid Serif', serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 16px;
+  color: #999999;
+  font-style: italic;
+}
+
+.author:before {
+  content: 'by  ';
+}
+
+.pageview:after {
+  content: '  pv';
+}
+
+/******************* ARTICLE *******************/
+.topImage {
+  width: 100%;
+  background-attachment: scroll;
+  background-position: center center;
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+}
+.topImage:after {
+  content: "";
+  display: block;
+  padding-top: 47%;
+}
+
+.article-info p {
+  display: inline;
+  padding-right: 20px;
+  font-size: 14px;
+  line-height: 21px;
+}
+.article-info .updateddate:before {
+  content: 'updated  ';
+}
+.article-info .tags {
+  padding-bottom: 30px;
+}
+.article-info .tags .tag {
+  font-style: italic;
+}
+
+.shareandcomments {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+.shareandcomments h5, .shareandcomments .form-control {
+  font-family: 'Droid Serif', serif;
+  font-size: 18px;
+  line-height: 27px;
+  color: #666666;
+}
+.shareandcomments .sns-buttons, .shareandcomments .commentRow {
+  padding-bottom: 20px;
+}
+.shareandcomments .sns fieldset, .shareandcomments .sns img, .shareandcomments .sns .form-group, .shareandcomments .sns input {
+  display: inline;
+}
+.shareandcomments .sns .form-control {
+  background-color: white;
+  height: 36px;
+}
+.shareandcomments .sns .counter {
+  padding-left: 0;
+}
+.shareandcomments .btn {
+  display: block;
+  margin: 0 auto;
+  height: 36px;
+  font-family: 'Lato', sans-serif;
+  font-size: 16px;
+  color: #666666;
+}
+.shareandcomments .commentBox {
+  padding: 10px;
+  position: relative;
+}
+.shareandcomments .commentBox .replyLink {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+}
+.shareandcomments .commentBox .panel {
+  background-color: inherit;
+}
+.shareandcomments .comment {
+  font-size: 16px;
+}
+.shareandcomments .comment:nth-child(odd) {
+  background-color: rgba(220, 220, 220, 0.4);
+}
+.shareandcomments .comment p {
+  display: inline-block;
+}
+.shareandcomments .comment .commentDate {
+  padding-left: 10px;
+  font-size: 14px;
+}
+.shareandcomments .comment .commentBody {
+  font-family: 'Droid Serif', serif;
+  font-weight: 400;
+}
+.shareandcomments .panel {
+  margin: 10px auto;
+}
+.shareandcomments .panel h2 {
+  text-align: center;
+}
+
+.articles h2, .commentRow h2 {
+  font-family: 'Droid Serif', serif;
+  font-size: 28px;
+  line-height: 42px;
+  color: #666666;
+  text-transform: capitalize;
+}
+
+/******************* ABOUT *******************/
+.about h2 {
+  color: #333333;
+  font-weight: 900;
+  font-size: 40px;
+  line-height: 60px;
+}
+
+.aboutus h3 {
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 42px;
+}
+.aboutus .well {
+  background-color: inherit;
+  box-shadow: none;
+  padding: 40px 0;
+}
+.aboutus .whathesays p {
+  color: #333333;
+  font-family: 'Droid Serif', serif;
+  font-size: 18px;
+  line-height: 27px;
+  font-weight: 400;
+}
+
+.contact {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+.contact p {
+  font-weight: 400;
+}
+.contact .panel-body {
+  background-color: rgba(250, 250, 250, 0.5);
+}
+.contact form label, .contact form .btn {
+  line-height: 20px;
+}
+.contact form label {
+  color: #333333;
+  font-size: 18px;
+  font-weight: 400;
+  text-transform: capitalize;
+}
+.contact form .btn {
+  font-size: 16px;
+  font-weight: 300;
+  display: block;
+  width: 50%;
+  margin: 20px auto 0;
+  text-align: center;
+}
+
+.termsofuse h3 {
+  text-align: center;
+  color: #333333;
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 34px;
+  text-transform: uppercase;
+}
+.termsofuse p {
+  color: #666666;
+  font-size: 18px;
+  line-height: 27px;
+  font-weight: 400;
+}
+
+.centered {
+  float: none;
+  margin: 0 auto;
+}
+
+.error {
+  font-size: 14px;
+  color: red;
+  padding-left: 10px;
+}
+
+.article-title {
+  font-size: 42px;
+  text-align: center;
+  font-family: 'Lato', sans-serif;
+  font-weight: 900;
+  color: #333333;
+  text-transform: capitalize;
+}
+
+.article-body {
+  font-family: 'Droid Serif', serif;
+  color: #333333;
+}
+.article-body h1, .article-body h2 {
+  font-weight: 700;
+}
+.article-body h1 {
+  font-size: 32px;
+  line-height: 48px;
+}
+.article-body h2 {
+  font-size: 28px;
+  line-height: 42px;
+}
+.article-body h3 {
+  font-size: 24px;
+  line-height: 36px;
+}
+.article-body h4 {
+  font-size: 20px;
+  line-height: 30px;
+}
+.article-body p {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 27px;
+}
+.article-body img {
+  display: block;
+  margin: 10px auto;
+}

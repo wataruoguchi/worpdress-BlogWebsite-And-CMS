@@ -1,0 +1,42 @@
+.article-title {
+	font-size: 42px;
+	text-align: center;
+	font-family: 'Lato', sans-serif;
+	font-weight: 900;
+	color: $strongFontColor;
+	text-transform: capitalize;
+}
+
+.article-body {
+	//no styling
+	font-family: 'Droid Serif', serif;
+	color: $strongFontColor;
+	h1, h2 {
+		font-weight: 700;
+	}
+	h1 {
+		font-size: 32px;
+		line-height: 48px;
+	}
+	h2 {
+		font-size: 28px;
+		line-height: 42px;
+	}
+	h3 {
+		font-size: 24px;
+		line-height: 36px;
+	}
+	h4 {
+		font-size: 20px;
+		line-height: 30px;
+	}
+	p {
+		font-weight: 400;
+		font-size: 18px;
+		line-height: 27px;
+	}
+	img {
+		display: block;
+		margin: 10px auto;
+	}
+}

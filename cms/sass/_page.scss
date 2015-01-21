@@ -1,0 +1,126 @@
+html {
+    overflow-y:scroll;
+}
+
+body {
+	background-color: #f8f8f8;
+}
+
+.fullWidth {
+   width: 100%;
+   margin-left: auto;
+   margin-right: auto;
+   max-width: initial;
+}
+
+.side-nav-area {
+	position: fixed;
+	top: 2.84rem;
+	left: 0;
+	height: 100%;
+	background-color: #333;
+	padding-left: 0;
+	padding-right: 0;
+	.side-nav {
+		line-height: 2rem;
+		padding: inherit;
+			&>li {
+				margin: 0;
+				&>a {
+				padding-left: 1.5rem;
+				padding-right: 0;
+				color: #fff;
+				&:hover,&:focus {
+					background-color: #000;
+				}
+			}
+		}
+	}
+}
+
+.login-panel {
+	margin-top: 5rem;
+}
+
+.login, .glance {
+	ul {
+		list-style: none;
+		margin-left: 0;
+	}
+}
+
+.caption {
+	font-size: 0.8rem;
+	line-height: 2rem;
+}
+
+/* for AngularJS */
+a[disabled="disabled"] {
+   pointer-events: none;
+   cursor: default;
+}
+
+.cms-subpage-title {
+	display: inline;
+	vertical-align: middle;
+	margin-right: 1rem;
+	line-height: 4rem;
+}
+
+.filters {
+	.button-positive {
+		background-color: #007095;
+	}
+}
+
+table tr:nth-child(2n) {
+	background-color: #f3f3f3;
+}
+
+/* Add new post */
+.titleTextbox {
+	font-size: 2rem;
+}
+.slug {
+	padding: 0.5rem;
+	font-size: 12px;
+	&>* {
+		display: inline;
+	}
+	.slugTextbox {
+		display: none;
+	}
+	.edit {
+		padding-left: 1rem;
+	}
+}
+.credit {
+	font-size: 8px;
+	display: block;
+	color: lighten(#008cba, 30%);
+}
+.panel {
+	background-color:#f8fafa;
+}
+.published {
+	&>.button {
+		display: block;
+	}
+	.trash {
+		&, &:hover, &:focus {
+			color: #dd0000;
+		}
+	}
+}
+
+.uploadedImage {
+	&>img {
+		height: 200px;
+	}
+}
+
+.error {
+	font-size: 14px;
+	color: red;
+	padding-left: 10px;
+}

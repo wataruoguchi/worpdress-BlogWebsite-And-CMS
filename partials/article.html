@@ -1,0 +1,179 @@
+<!-- article -->
+<section class="article">
+	<div ng-repeat="data in article">
+		<div class="topImage" style="background-image: url(./cms/{{data.imageUrl}})" ng-if="data.imageUrl!=null"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-9 centered">
+					<h1 class="article-title">{{data.header}}</h1>
+					<div class="article-body" ng-bind-html="data.body"></div>
+					<div class="article-info">
+						<p class="updateddate">{{data.updatedDate}}</p>
+						<p class="author">{{data.displayName}}</p>
+						<p class="pageview">{{data.views}}</p>
+						<div class="tags">
+							<p class="tag" ng-repeat="tag in data.tags">#{{tag.text}}</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- share and comments -->
+<section class="shareandcomments">
+	<div class="container">
+		<div class="row sns-buttons">
+			<div class="col-md-6 centered">
+				<div class="row">
+					<div class="col-sm-6">
+						<h5>Share</h5>
+						<div class="row sns">
+							<div class="col-xs-6">
+								<div class="row sns1">
+									<div class="col-xs-5">
+										<img src="./asset/sns-icon-1.png" alt="">
+									</div>
+									<div class="col-xs-7 counter">
+										<fieldset disabled>
+											<div class="form-group">
+												<input type="text" class="form-control text-right" value="0">
+											</div>
+										</fieldset>		
+									</div>
+								</div> <!-- /sns1 -->
+							</div>
+							<div class="col-xs-6">
+								<div class="row sns2">
+									<div class="col-xs-5">
+										<img src="./asset/sns-icon-2.png" alt="">
+									</div>
+									<div class="col-xs-7 counter">
+										<fieldset disabled>
+											<div class="form-group">
+												<input type="text" class="form-control text-right" value="0">
+											</div>
+										</fieldset>
+									</div>
+								</div> <!-- /sns2 -->
+							</div>
+						</div>
+					</div> <!-- /share -->
+					<div class="col-sm-6">
+						<h5>{{comments.length}} Comments</h5>
+						<button class="btn btn-default" ng-click="commentToggle()">View &amp; Comment</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row commentRow" ng-if="toggle">
+			<div class="col-md-9 centered">
+				<div class="row comment" ng-repeat="comment in comments">
+					<div class="col-xs-12 commentBox">
+						<div style="padding-left:{{comment.level*15}}px">
+							<a ng-click="replyClick(comment.postId)" class="replyLink">Reply</a>
+							<a href="{{comment.URL}}" ng-if="comment.URL != ''">
+								{{comment.displayName}}</a>
+							<p ng-if="comment.URL == ''">
+								{{comment.displayName}}</p>
+							<p class="commentDate">{{comment.updatedDate}}</p>
+							<div class="commentBody">
+								{{comment.body}}
+							</div>
+						</div>
+						<div class="panel panel-default replyPanel" ng-if="replyNo == comment.postId">
+							<div class="panel-body">
+								<form name="replyForm">
+									<div class="row">
+										<div class="col-sm-6">
+											<div class="form-group">
+												<input type="text" class="form-control" placeholder="Your name" name="replyname" ng-maxlength="30" ng-model="commentarticle.name" required>
+												<span class="error" ng-show="replyForm.replyname.$dirty && replyForm.replyname.$invalid">Leave your name within 30 charactors</span>
+											</div>
+										</div>
+										<div class="col-sm-6">
+											<div class="form-group">
+												<input type="email" class="form-control" placeholder="Your email address" name="replyemail" ng-maxlength="255" ng-model="commentarticle.email" required>
+												<span class="error" ng-show="replyForm.replyemail.$dirty && replyForm.replyemail.$invalid">Leave your email address</span>
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-sm-12">
+											<div class="form-group">
+												<input type="text" class="form-control" placeholder="Your website's URL" name="replyurl" ng-model="commentarticle.url">
+											</div>
+											<div class="form-group">
+												<textarea cols="30" rows="5" class="form-control" placeholder="Your message" name="replymessage" ng-model="commentarticle.message" required></textarea>
+												<span class="error" ng-show="replyForm.replymessage.$dirty && replyForm.replymessage.$invalid">Leave your message</span>
+											</div>
+										</div>
+										<button class="btn btn-default" ng-click="submitReply(comment.postId)"
+										 ng-disabled="!replyForm.replyname.$valid
+										 || !replyForm.replyemail.$valid
+										 || !replyForm.replymessage.$valid">Reply</button>
+									</div>
+								</form>
+							</div>
+						</div>	<!-- /panel -->
+					</div>
+				</div>
+
+				<!-- Comment -->
+				<div class="panel panel-default" ng-repeat="data in article">
+					<h2>Leave your comment</h2>
+					<div class="panel-body">
+						<form name="commentForm">
+							<div class="row">
+								<div class="col-sm-6">
+									<div class="form-group"><input type="text" class="form-control" placeholder="Your name" name="commentname" ng-maxlength="30" ng-model="commentarticle.name" required>
+									<span class="error" ng-show="commentForm.commentname.$dirty && commentForm.commentname.$invalid">Leave your name within 30 charactors</span>
+								</div>
+								</div>
+								<div class="col-sm-6">
+									<div class="form-group"><input type="email" class="form-control" placeholder="Your email address" name="commentemail" ng-maxlength="255" ng-model="commentarticle.email" required>
+									<span class="error" ng-show="commentForm.commentemail.$dirty && commentForm.commentemail.$invalid">Leave your email address</span></div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-12">
+									<div class="form-group"><input type="text" class="form-control" placeholder="Your website's URL" ng-model="commentarticle.url"></div>
+									<div class="form-group">
+										<textarea cols="30" rows="5" class="form-control" placeholder="Your message"  name="comment" ng-model="commentarticle.message" required></textarea>
+										<span class="error" ng-show="commentForm.comment.$dirty && commentForm.comment.$invalid">Leave your message</span>
+									</div>
+									<button class="btn btn-default" ng-click="submitComment()"
+									ng-disabled="!commentForm.commentname.$valid
+										 || !commentForm.commentemail.$valid
+										 || !commentForm.comment.$valid">Submit</button>					
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>	<!-- /panel -->
+			</div>
+		</div>
+	</div>
+</section>
+<!-- articles -->
+<section class="articles">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-10 centered" ng-controller="HomeController">
+				<h2>Popular Articles</h2>
+				<div class="row">
+					<div class="col-sm-12 col-md-6 col-lg-4" ng-repeat="result in filteredResults | orderBy:'views':true | limitTo:3">
+						<div class="rounded rounded-link well-sm">
+							<a ui-sref="article({postId:result.postId})"></a>
+							<div class="inner-shadow-img" style="background-image: url(./cms/{{result.imageUrl}})" ng-if="result.imageUrl!=null"></div>
+							<div class="inner-shadow-img" style="background-image: url(./asset/placeholder.png)" ng-if="result.imageUrl==null"></div>
+							<h3 class="title">{{result.header}}</h3>
+							<p class="author">{{result.displayName}}</p>
+							<p class="pageview">{{result.views | number}}</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

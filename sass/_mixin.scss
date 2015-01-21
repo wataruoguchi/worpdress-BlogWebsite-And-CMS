@@ -1,0 +1,101 @@
+/**********mixin.scss**********/
+@mixin halfImg($img) {
+    $img_width: round(image-width($img)/2);
+    $img_height: round(image-height($img)/2);
+    width: $img_width;
+    height: $img_height;
+}
+@mixin arrow-updown
+{
+    width: 0;
+    height: 0;
+    border-left: $size solid transparent;
+    border-right: $size solid transparent;
+}
+
+@mixin arrow-up($size:10px, $color:$default_color) {
+    @include arrow-updown;
+    border-bottom: $size solid $color;
+}
+
+@mixin arrow-down($size:10px, $color:$default_color) {
+    @include arrow-updown;
+    border-top: $size solid $color;
+}
+
+@mixin arrow-side {
+    width: 0;
+    height: 0;
+    border-top: $size solid transparent;
+    border-bottom: $size solid transparent;
+}
+
+@mixin arrow-right($size:10px, $color:$default_color) {
+    @include arrow-side;
+    border-left: $size solid $color;
+}
+
+@mixin arrow-left($size:10px, $color:$default_color) {
+    @include arrow-side;
+    border-right: $size solid $color;
+}
+
+$set_prefix: -webkit-, -moz-, -ms-, "";
+@mixin transition($property:all, $duration:0.3s) {
+    @each $prefix in $set_prefix {
+        #{$prefix}transition: $property $duration;
+    }
+}
+
+@mixin border-radius($raduis:25px) {
+    @each $prefix in $set_prefix {
+        #{$prefix}border-radius: $raduis;
+    }
+}
+
+@mixin box-shadow($parameter) {
+    @each $prefix in $set_prefix {
+        #{$prefix}box-shadow: $parameter;
+    }
+}
+
+@mixin linear-gradient($angle:180deg, $startColor:$default_color, $midColor:$default_color2, $endColor:$default_color) {
+    @each $prefix in $set_prefix {
+        background: #{$prefix}linear-gradient($angle,$startColor,$midColor,$endColor);
+    }
+}
+
+@mixin linear-gradient_SideBySide($angle:180deg, $sideColor:$default_color, $midColor:$default_color2) {
+    @include linear-gradient($angle,$sideColor,$midColor,$sideColor);
+}
+
+@mixin translate($x:-50%, $y:25%) {
+    @each $prefix in $set_prefix {
+        #{$prefix}transform: translate($x, $y);
+    }
+}
+
+@mixin radial-gradient($angle:180deg, $startColor:$default_color, $endColor:$default_color2) {
+    @each $prefix in $set_prefix {
+        background: #{$prefix}radial-gradient($angle,$startColor,$endColor);
+    }    
+}
+
+@mixin buttonBorder() {
+    border: 1px solid $default_color;
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    vertical-align: middle;
+    @include border-radius(5px);
+}
+
+@mixin ratioKeeper($ratio:1) {
+    position: relative;
+    width: 100%;
+    &:before {
+        content: "";
+        display: block;
+        padding-top: $ratio * 100%;
+    }
+}

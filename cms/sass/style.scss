@@ -1,0 +1,20 @@
+$headerFontColor:#f1592a;
+$defaultFontColor:#383838;
+$backgroundColor1:#fafafa;
+$backgroundColor2:#f9921f;
+$contactBackgroundColor:#eded47;
+$navBackgroundColor:darken($backgroundColor2, 6);
+$linkColor:$headerFontColor;
+$linkHoverColor:darken($headerFontColor, 4);
+$selectedNaviColor:#fed136;
+$selectSelectedNaviColor:darken($selectedNaviColor, 6);
+
+//Define BASE
+/* @import "_base.scss"; */
+
+//Front-end pages
+@import "_textAngular.scss";
+@import "_page.scss";
+
+//Back-end pages
+/* @import "_cms.scss"; */

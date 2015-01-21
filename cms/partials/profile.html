@@ -1,0 +1,82 @@
+<!-- First row -->
+<div class="row fullWidth">
+	<div class="small-12 column">
+		<h2 class="cms-subpage-title">User Profile</h2>
+	</div>
+</div>
+<!-- Second row -->
+<div class="row fullWidth">
+	<form name="profile">
+		<div class="small-12 columns">
+			<div class="panel glance" ng-repeat="data in oneRecordUserData">
+				<h5>Edit Profile</h5>
+				<div class="row">
+					<div class="small-12 medium-6 column">
+						<div class="panel">
+							<h6>Name</h6>
+								<ul>
+		                            <li><label>Display Name</label>
+		                            	<span class="error" ng-show="profile.displayname.$dirty && profile.displayname.$invalid">Leave your name within 30 charactors</span>
+	    	                            <input type="text" name="displayname" class="titleTextbox" ng-model="data.displayName" placeholder="Display Name" ng-maxlength="30" required/></li>
+		                            <li><label>Your Name</label>
+		                            	<span class="error" ng-show="profile.username.$dirty && profile.username.$invalid">Leave your name within 50 charactors</span>
+	        	                        <input type="text" name="username" class="titleTextbox" ng-model="data.userName" placeholder="User Name" ng-maxlength="50" required/></li>
+								</ul>
+						</div>
+					</div>
+					<div class="small-12 medium-6 column">
+						<div class="panel">
+							<h6>Link</h6>
+							<ul>
+	                            <li><label>Email</label>
+	                            	<span class="error" ng-show="profile.email.$dirty && profile.email.$invalid">Leave your email address</span>
+		                            <input type="email" class="titleTextbox" ng-model="data.Email" placeholder="Email address" name="email" ng-maxlength="255" required/></li>
+	                            <li><label>Your URL</label>
+	                            <input type="text" class="titleTextbox" ng-model="data.URL" placeholder="Website's URL"/></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="small-12 medium-6 column">
+						<div class="panel">
+							<h6>Setting</h6>
+								<ul>
+		                            <li><label>User Role</label>
+									<select ng-disabled="roleIsDisabled()" ng-model="data.userRoleSelected" ng-options="option as option.label for option in userRoleOptions"></select>
+		                            <li><label>User Availability</label>
+									<select ng-disabled="availabilityIsDisabled()" ng-model="data.userAvailabilitySelected" ng-options="option as option.label for option in userAvailabilityOptions"></select>
+								</ul>
+						</div>
+					</div>
+					<div class="small-12 medium-6 column">
+						<div class="panel">
+							<h6>Password</h6>
+							<span class="caption">Change password here</span>
+							<ul>
+	                            <li><label>Current Password</label>
+	                            	<span class="error" ng-show="profile.password1.$dirty && profile.password1.$invalid">too long/too short</span>
+		                            <input type="password" class="titleTextbox" ng-model="data.currentPassword" placeholder="Password" name="password1" ng-minlength="4" ng-maxlength="255" /></li>
+	                            <li><label>New Password</label>
+	                            	<span class="error" ng-show="profile.password2.$dirty && profile.password2.$invalid">too long/too short</span>
+		                            <input type="password" class="titleTextbox" ng-model="data.newPassword" placeholder="Password" name="password2" ng-minlength="4" ng-maxlength="255" /></li>
+	                            <li><label>Repeat New Password</label>
+	                            	<input type="password" class="titleTextbox" ng-model="data.newPassword2" placeholder="Password" name="password3"/></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="row clearfix">
+					<div class="small-4 medium-3 large-2 column right">
+						<a class="button expand radius" ng-click="saveProfile();"
+						ng-disabled="!profile.displayname.$valid
+							 || !profile.username.$valid
+							 || !profile.email.$valid
+							 || !profile.password1.$valid
+							 || !profile.password2.$valid">Save</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>

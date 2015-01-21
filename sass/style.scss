@@ -1,0 +1,21 @@
+$backgroundColor:#f5f5f5;	//header, footer background
+$strongFontColor:#333;
+$midiumFontColor:#666;
+$weakFontColor:#999;
+$accentColor:#ffd300;
+$shadowColor: rgba(0,0,0,0.4);
+
+//Install font
+@import "_font.scss";
+
+//bootstrap sticky-footer
+@import "_sticky-footer-navbar.scss";
+
+//mixin
+@import "_mixin.scss";
+
+//Front-end pages
+@import "_page.scss";
+
+//Front-end article body and title
+@import "_articleStyle.scss";

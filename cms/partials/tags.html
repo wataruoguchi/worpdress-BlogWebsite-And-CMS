@@ -1,0 +1,77 @@
+<!-- First row -->
+<div class="row fullWidth">
+	<div class="small-12 column">
+		<h2 class="cms-subpage-title">Tags</h2>
+		<!-- ADD NEW -->
+		<a class="button tiny radius" ng-click="addToggle()">Add New</a>
+		<div class="row fullWidth" ng-if="addToggleVal">
+			<div class="medium-12 large-6 columns panel">
+				<div class="row fullWidth">
+					<form name="newtag">
+						<div class="medium-3 columns">
+							<input type="text" name="name" ng-model="addTagName" placeholder="Input new tag name" ng-minlength="3" ng-maxlength="20" required ng-blur="bindNewTagNameManually(addTagName)" />
+							<span class="error" ng-show="newtag.name.$dirty && newtag.name.$invalid">Leave 3-20 charactors</span>
+						</div>
+						<div class="medium-7 columns">
+							<input type="text" name="description" ng-model="addDescription" placeholder="Input description" ng-maxlength="200" ng-blur="bindNewTagDescManually(addDescription)" />
+							<span class="error" ng-show="newtag.description.$dirty && newtag.description.$invalid">Leave less than 201 charactors</span>
+						</div>
+						<div class="medium-2 columns">
+							<a class="button tiny radius" ng-click="add()" ng-disabled="!newtag.name.$valid
+							 || !newtag.description.$valid">Add Tag</a>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Second row -->
+<div class="row fullWidth">
+	<!-- SEARCH -->
+	<div class="medium-12 large-2 columns">
+		<input type="text" ng-model="searchBox" placeholder="Search tags..." />
+	</div>
+
+	<!-- PAGINATION -->
+	<div class="medium-12 large-6 columns clearfix">
+		<div class="right pagesDisplay">
+			<a class="button tiny" ng-disabled="currentPage == 0" ng-click="currentPage=0">«</a>
+			<a class="button tiny" ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1">‹</a>
+			Page 
+			<span ng-if="numberOfPages()>0">{{currentPage+1}}</span>
+			<span ng-if="numberOfPages()==0">0</span>
+			of {{numberOfPages()}}
+			<a class="button tiny" ng-disabled="currentPage >= filteredResults.length/pageSize-1" ng-click="currentPage=currentPage+1">›</a>
+			<a class="button tiny" ng-disabled="currentPage >= filteredResults.length/pageSize-1" ng-click="currentPage=numberOfPages()-1">»</a>
+		</div>
+	</div>
+</div>
+<!-- Third row -->
+<div class="row fullWidth">
+	<div class="small-12 column">
+		<table class="fullWidth">
+			<!-- LIST -->
+			<thead>
+				<tr>
+					<th class="small-1 columns"></th>
+					<th class="small-3 columns">Tag Name</th>
+					<th class="small-8 columns">Description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat='result in filteredResults | startFrom: currentPage*pageSize | limitTo:pageSize'>
+					<td class="small-1 columns">
+					<a ng-click="delete(currentPage*pageSize+$index)">Delete</a>
+					</td>
+					<td class="small-3 columns">
+						<input type="text" ng-model="result.tagName" ng-minlength="3" ng-maxlength="20" ng-blur="update(currentPage*pageSize+$index)">
+					</td>
+					<td class="small-8 columns">
+						<input type="text" ng-model="result.description" ng-maxlength="200" ng-blur="update(currentPage*pageSize+$index)">
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
